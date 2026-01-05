@@ -1,0 +1,1402 @@
+import { useState, useMemo, useEffect } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { type Company, type Vehicle, insertCompanySchema, insertVehicleSchema } from "@shared/schema";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { useToast } from "@/hooks/use-toast";
+import { Building2, Truck, Plus, Edit, Trash2, ChevronLeft, ChevronRight } from "lucide-react";
+
+const ITEMS_PER_PAGE = 20;
+
+export default function Manage() {
+  const { toast } = useToast();
+  const [showCompanyForm, setShowCompanyForm] = useState(false);
+  const [showVehicleForm, setShowVehicleForm] = useState(false);
+  const [editingCompany, setEditingCompany] = useState<Company | null>(null);
+  const [deletingCompany, setDeletingCompany] = useState<Company | null>(null);
+  const [editingVehicle, setEditingVehicle] = useState<Vehicle | null>(null);
+  const [deletingVehicle, setDeletingVehicle] = useState<Vehicle | null>(null);
+  const [companySearch, setCompanySearch] = useState("");
+  const [vehicleSearch, setVehicleSearch] = useState("");
+  const [companyPage, setCompanyPage] = useState(1);
+  const [vehiclePage, setVehiclePage] = useState(1);
+
+  const { data: companies = [], isLoading: companiesLoading } = useQuery<Company[]>({
+    queryKey: ["/api/companies"],
+  });
+
+  const { data: vehicles = [], isLoading: vehiclesLoading } = useQuery<Vehicle[]>({
+    queryKey: ["/api/vehicles"],
+  });
+
+  const getCompanyName = (coId: number) => {
+    const company = companies.find((c) => c.coId === coId);
+    return company?.name || `Unknown (${coId})`;
+  };
+
+  const filteredCompanies = useMemo(() => {
+    if (!companySearch.trim()) return companies;
+    const search = companySearch.toLowerCase();
+    return companies.filter((company) =>
+      company.name.toLowerCase().includes(search) ||
+      company.transportManager?.toLowerCase().includes(search) ||
+      company.transportManagerEmail?.toLowerCase().includes(search) ||
+      company.transportManagerPhone?.toLowerCase().includes(search)
+    );
+  }, [companies, companySearch]);
+
+  const filteredVehicles = useMemo(() => {
+    if (!vehicleSearch.trim()) return vehicles;
+    const search = vehicleSearch.toLowerCase();
+    return vehicles.filter((vehicle) => {
+      const companyName = getCompanyName(vehicle.coId).toLowerCase();
+      return vehicle.vreg.toLowerCase().includes(search) ||
+        companyName.includes(search);
+    });
+  }, [vehicles, vehicleSearch, companies]);
+
+  useEffect(() => {
+    setCompanyPage(1);
+  }, [companySearch]);
+
+  useEffect(() => {
+    setVehiclePage(1);
+  }, [vehicleSearch]);
+
+  const companyTotalPages = Math.ceil(filteredCompanies.length / ITEMS_PER_PAGE);
+  const vehicleTotalPages = Math.ceil(filteredVehicles.length / ITEMS_PER_PAGE);
+
+  useEffect(() => {
+    if (companyPage > companyTotalPages && companyTotalPages > 0) {
+      setCompanyPage(companyTotalPages);
+    }
+  }, [companyTotalPages, companyPage]);
+
+  useEffect(() => {
+    if (vehiclePage > vehicleTotalPages && vehicleTotalPages > 0) {
+      setVehiclePage(vehicleTotalPages);
+    }
+  }, [vehicleTotalPages, vehiclePage]);
+
+  const paginatedCompanies = useMemo(() => {
+    const startIndex = (companyPage - 1) * ITEMS_PER_PAGE;
+    return filteredCompanies.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  }, [filteredCompanies, companyPage]);
+
+  const paginatedVehicles = useMemo(() => {
+    const startIndex = (vehiclePage - 1) * ITEMS_PER_PAGE;
+    return filteredVehicles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  }, [filteredVehicles, vehiclePage]);
+
+  const companyForm = useForm({
+    resolver: zodResolver(insertCompanySchema),
+    defaultValues: {
+      name: "",
+      transportManagerEmail: "",
+      transportManagerPhone: "",
+      poContact: "",
+      poContactEmail: "",
+      poContactPhone: "",
+      plContact: "",
+      plContactEmail: "",
+      plContactPhone: "",
+    },
+  });
+
+  const vehicleFormSchema = insertVehicleSchema.pick({ vreg: true, coId: true }).extend({
+    vreg: insertVehicleSchema.shape.vreg.min(1, "Vehicle registration is required"),
+    coId: insertVehicleSchema.shape.coId.refine((val) => val > 0, {
+      message: "Please select a company",
+    }),
+  });
+
+  const vehicleForm = useForm({
+    resolver: zodResolver(vehicleFormSchema),
+    defaultValues: {
+      vreg: "",
+      coId: undefined as any,
+    },
+  });
+
+  const createCompanyMutation = useMutation({
+    mutationFn: async (data: any) => {
+      await apiRequest("POST", "/api/companies", data);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/companies"] });
+      toast({
+        title: "Success",
+        description: "Company created successfully",
+      });
+      companyForm.reset();
+      setShowCompanyForm(false);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to create company",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const createVehicleMutation = useMutation({
+    mutationFn: async (data: any) => {
+      await apiRequest("POST", "/api/vehicles", {
+        vreg: data.vreg,
+        coId: data.coId,
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/vehicles"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/washes"] });
+      toast({
+        title: "Success",
+        description: "Vehicle created successfully",
+      });
+      vehicleForm.reset();
+      setShowVehicleForm(false);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to create vehicle",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const updateCompanyMutation = useMutation({
+    mutationFn: async ({ coId, data }: { coId: number; data: any }) => {
+      await apiRequest("PATCH", `/api/companies/${coId}`, data);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/companies"] });
+      toast({
+        title: "Success",
+        description: "Company updated successfully",
+      });
+      setEditingCompany(null);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to update company",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const deleteCompanyMutation = useMutation({
+    mutationFn: async (coId: number) => {
+      await apiRequest("DELETE", `/api/companies/${coId}`, undefined);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/companies"] });
+      toast({
+        title: "Success",
+        description: "Company deleted successfully",
+      });
+      setDeletingCompany(null);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete company",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const updateVehicleMutation = useMutation({
+    mutationFn: async ({ vreg, data }: { vreg: string; data: any }) => {
+      await apiRequest("PATCH", `/api/vehicles/${vreg}`, data);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/vehicles"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/washes"] });
+      toast({
+        title: "Success",
+        description: "Vehicle updated successfully",
+      });
+      setEditingVehicle(null);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to update vehicle",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const deleteVehicleMutation = useMutation({
+    mutationFn: async (vreg: string) => {
+      await apiRequest("DELETE", `/api/vehicles/${vreg}`, undefined);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/vehicles"] });
+      toast({
+        title: "Success",
+        description: "Vehicle deleted successfully",
+      });
+      setDeletingVehicle(null);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete vehicle",
+        variant: "destructive",
+      });
+    },
+  });
+
+  return (
+    <div className="px-4 md:px-6 py-6 md:py-8 max-w-7xl mx-auto space-y-6 md:space-y-8">
+      <div>
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Manage Fleet</h1>
+        <p className="text-muted-foreground mt-2 text-sm md:text-base">
+          Create and manage companies and their vehicles
+        </p>
+      </div>
+
+      {/* Mobile: Tabs */}
+      <div className="md:hidden">
+        <Tabs defaultValue="companies" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 mb-6">
+            <TabsTrigger value="companies" data-testid="tab-companies-mobile">
+              <Building2 className="h-4 w-4 mr-2" />
+              Companies
+            </TabsTrigger>
+            <TabsTrigger value="vehicles" data-testid="tab-vehicles-mobile">
+              <Truck className="h-4 w-4 mr-2" />
+              Vehicles
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="companies">
+            <CompaniesCard
+              companies={paginatedCompanies}
+              companiesLoading={companiesLoading}
+              showCompanyForm={showCompanyForm}
+              setShowCompanyForm={setShowCompanyForm}
+              companyForm={companyForm}
+              createCompanyMutation={createCompanyMutation}
+              setEditingCompany={setEditingCompany}
+              setDeletingCompany={setDeletingCompany}
+              isMobile={true}
+              searchQuery={companySearch}
+              setSearchQuery={setCompanySearch}
+              currentPage={companyPage}
+              totalPages={companyTotalPages}
+              totalItems={filteredCompanies.length}
+              onPageChange={setCompanyPage}
+            />
+          </TabsContent>
+
+          <TabsContent value="vehicles">
+            <VehiclesCard
+              vehicles={paginatedVehicles}
+              vehiclesLoading={vehiclesLoading}
+              companies={companies}
+              showVehicleForm={showVehicleForm}
+              setShowVehicleForm={setShowVehicleForm}
+              vehicleForm={vehicleForm}
+              createVehicleMutation={createVehicleMutation}
+              getCompanyName={getCompanyName}
+              setEditingVehicle={setEditingVehicle}
+              setDeletingVehicle={setDeletingVehicle}
+              isMobile={true}
+              searchQuery={vehicleSearch}
+              setSearchQuery={setVehicleSearch}
+              currentPage={vehiclePage}
+              totalPages={vehicleTotalPages}
+              totalItems={filteredVehicles.length}
+              onPageChange={setVehiclePage}
+            />
+          </TabsContent>
+        </Tabs>
+      </div>
+
+      {/* Desktop: Grid */}
+      <div className="hidden md:grid md:grid-cols-2 gap-6">
+        <CompaniesCard
+          companies={paginatedCompanies}
+          companiesLoading={companiesLoading}
+          showCompanyForm={showCompanyForm}
+          setShowCompanyForm={setShowCompanyForm}
+          companyForm={companyForm}
+          createCompanyMutation={createCompanyMutation}
+          setEditingCompany={setEditingCompany}
+          setDeletingCompany={setDeletingCompany}
+          isMobile={false}
+          searchQuery={companySearch}
+          setSearchQuery={setCompanySearch}
+          currentPage={companyPage}
+          totalPages={companyTotalPages}
+          totalItems={filteredCompanies.length}
+          onPageChange={setCompanyPage}
+        />
+        <VehiclesCard
+          vehicles={paginatedVehicles}
+          vehiclesLoading={vehiclesLoading}
+          companies={companies}
+          showVehicleForm={showVehicleForm}
+          setShowVehicleForm={setShowVehicleForm}
+          vehicleForm={vehicleForm}
+          createVehicleMutation={createVehicleMutation}
+          getCompanyName={getCompanyName}
+          setEditingVehicle={setEditingVehicle}
+          setDeletingVehicle={setDeletingVehicle}
+          isMobile={false}
+          searchQuery={vehicleSearch}
+          setSearchQuery={setVehicleSearch}
+          currentPage={vehiclePage}
+          totalPages={vehicleTotalPages}
+          totalItems={filteredVehicles.length}
+          onPageChange={setVehiclePage}
+        />
+      </div>
+
+      {/* Edit Company Dialog */}
+      <Dialog open={!!editingCompany} onOpenChange={(open) => !open && setEditingCompany(null)}>
+        <DialogContent data-testid="dialog-edit-company">
+          <DialogHeader>
+            <DialogTitle>Edit Company</DialogTitle>
+            <DialogDescription>
+              Update company information and contact details
+            </DialogDescription>
+          </DialogHeader>
+          {editingCompany && (
+            <EditCompanyForm
+              company={editingCompany}
+              onSubmit={(data) => updateCompanyMutation.mutate({ coId: editingCompany.coId, data })}
+              onCancel={() => setEditingCompany(null)}
+              isPending={updateCompanyMutation.isPending}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Company Confirmation */}
+      <AlertDialog open={!!deletingCompany} onOpenChange={(open) => !open && setDeletingCompany(null)}>
+        <AlertDialogContent data-testid="dialog-delete-company">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Company</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete {deletingCompany?.name}? This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel data-testid="button-cancel-delete-company">Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => deletingCompany && deleteCompanyMutation.mutate(deletingCompany.coId)}
+              className="bg-destructive hover-elevate"
+              data-testid="button-confirm-delete-company"
+            >
+              {deleteCompanyMutation.isPending ? "Deleting..." : "Delete"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Edit Vehicle Dialog */}
+      <Dialog open={!!editingVehicle} onOpenChange={(open) => !open && setEditingVehicle(null)}>
+        <DialogContent data-testid="dialog-edit-vehicle">
+          <DialogHeader>
+            <DialogTitle>Edit Vehicle</DialogTitle>
+            <DialogDescription>
+              Update vehicle information
+            </DialogDescription>
+          </DialogHeader>
+          {editingVehicle && (
+            <EditVehicleForm
+              vehicle={editingVehicle}
+              companies={companies}
+              onSubmit={(data) => updateVehicleMutation.mutate({ vreg: editingVehicle.vreg, data })}
+              onCancel={() => setEditingVehicle(null)}
+              isPending={updateVehicleMutation.isPending}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Vehicle Confirmation */}
+      <AlertDialog open={!!deletingVehicle} onOpenChange={(open) => !open && setDeletingVehicle(null)}>
+        <AlertDialogContent data-testid="dialog-delete-vehicle">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Vehicle</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete vehicle {deletingVehicle?.vreg}? This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel data-testid="button-cancel-delete-vehicle">Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => deletingVehicle && deleteVehicleMutation.mutate(deletingVehicle.vreg)}
+              className="bg-destructive hover-elevate"
+              data-testid="button-confirm-delete-vehicle"
+            >
+              {deleteVehicleMutation.isPending ? "Deleting..." : "Delete"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </div>
+  );
+}
+
+function CompaniesCard({
+  companies,
+  companiesLoading,
+  showCompanyForm,
+  setShowCompanyForm,
+  companyForm,
+  createCompanyMutation,
+  setEditingCompany,
+  setDeletingCompany,
+  isMobile,
+  searchQuery,
+  setSearchQuery,
+  currentPage,
+  totalPages,
+  totalItems,
+  onPageChange,
+}: {
+  companies: Company[];
+  companiesLoading: boolean;
+  showCompanyForm: boolean;
+  setShowCompanyForm: (show: boolean) => void;
+  companyForm: any;
+  createCompanyMutation: any;
+  setEditingCompany: (company: Company) => void;
+  setDeletingCompany: (company: Company) => void;
+  isMobile: boolean;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+  onPageChange: (page: number) => void;
+}) {
+  return (
+    <Card>
+      <CardHeader className="space-y-0 pb-2 gap-1 flex-wrap">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Building2 className="h-5 w-5 text-primary" />
+            <CardTitle>Companies</CardTitle>
+          </div>
+          <Button
+            size="sm"
+            onClick={() => setShowCompanyForm(!showCompanyForm)}
+            data-testid="button-toggle-company-form"
+          >
+            <Plus className="h-4 w-4 mr-1" />
+            New Company
+          </Button>
+        </div>
+        <CardDescription>
+          {totalItems} {totalItems === 1 ? "company" : "companies"} registered
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div>
+          <Input
+            type="text"
+            placeholder="Search companies..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full"
+            data-testid="input-search-companies"
+          />
+        </div>
+        {showCompanyForm && (
+          <Form {...companyForm}>
+            <form
+              onSubmit={companyForm.handleSubmit((data: any) =>
+                createCompanyMutation.mutate(data)
+              )}
+              className="space-y-3 p-4 border rounded-md bg-muted/50"
+              data-testid="form-create-company"
+            >
+              <FormField
+                control={companyForm.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company Name *</FormLabel>
+                    <FormControl>
+                      <Input {...field} placeholder="Fleet Transport Ltd" data-testid="input-company-name" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <Tabs defaultValue="tm" className="w-full">
+                <TabsList className="grid w-full grid-cols-3">
+                  <TabsTrigger value="tm">TM</TabsTrigger>
+                  <TabsTrigger value="po">PO</TabsTrigger>
+                  <TabsTrigger value="pl">PL</TabsTrigger>
+                </TabsList>
+                <TabsContent value="tm" className="space-y-3 pt-3">
+                  <FormField
+                    control={companyForm.control}
+                    name="transportManager"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Transport Manager</FormLabel>
+                        <FormControl>
+                          <Input {...field} value={field.value ?? ""} placeholder="John Smith" data-testid="input-transport-manager" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={companyForm.control}
+                    name="transportManagerEmail"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>TM Email</FormLabel>
+                        <FormControl>
+                          <Input {...field} value={field.value ?? ""} type="email" placeholder="contact@company.co.uk" data-testid="input-tm-email" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={companyForm.control}
+                    name="transportManagerPhone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>TM Phone</FormLabel>
+                        <FormControl>
+                          <Input {...field} value={field.value ?? ""} placeholder="01234567890" data-testid="input-tm-phone" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </TabsContent>
+                <TabsContent value="po" className="space-y-3 pt-3">
+                  <FormField
+                    control={companyForm.control}
+                    name="poContact"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>PO Contact</FormLabel>
+                        <FormControl>
+                          <Input {...field} value={field.value ?? ""} placeholder="Jane Doe" data-testid="input-po-contact" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={companyForm.control}
+                    name="poContactEmail"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>PO Email</FormLabel>
+                        <FormControl>
+                          <Input {...field} value={field.value ?? ""} type="email" placeholder="jane@company.co.uk" data-testid="input-po-email" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={companyForm.control}
+                    name="poContactPhone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>PO Phone</FormLabel>
+                        <FormControl>
+                          <Input {...field} value={field.value ?? ""} placeholder="01234567891" data-testid="input-po-phone" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </TabsContent>
+                <TabsContent value="pl" className="space-y-3 pt-3">
+                  <FormField
+                    control={companyForm.control}
+                    name="plContact"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>PL Contact</FormLabel>
+                        <FormControl>
+                          <Input {...field} value={field.value ?? ""} placeholder="Bob Miller" data-testid="input-pl-contact" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={companyForm.control}
+                    name="plContactEmail"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>PL Email</FormLabel>
+                        <FormControl>
+                          <Input {...field} value={field.value ?? ""} type="email" placeholder="bob@company.co.uk" data-testid="input-pl-email" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={companyForm.control}
+                    name="plContactPhone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>PL Phone</FormLabel>
+                        <FormControl>
+                          <Input {...field} value={field.value ?? ""} placeholder="01234567892" data-testid="input-pl-phone" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </TabsContent>
+              </Tabs>
+              <div className="flex gap-2 pt-2">
+                <Button
+                  type="submit"
+                  disabled={createCompanyMutation.isPending}
+                  data-testid="button-submit-company"
+                >
+                  {createCompanyMutation.isPending ? "Creating..." : "Create Company"}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setShowCompanyForm(false);
+                    companyForm.reset();
+                  }}
+                  data-testid="button-cancel-company"
+                >
+                  Cancel
+                </Button>
+              </div>
+            </form>
+          </Form>
+        )}
+
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className={isMobile ? "hidden md:table-cell" : ""}>ID</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Contact</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {companiesLoading ? (
+                <TableRow>
+                  <TableCell colSpan={4} className="text-center text-muted-foreground">
+                    Loading...
+                  </TableCell>
+                </TableRow>
+              ) : companies.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={4} className="text-center text-muted-foreground">
+                    No companies yet
+                  </TableCell>
+                </TableRow>
+              ) : (
+                companies.map((company) => (
+                  <TableRow key={company.coId} data-testid={`row-company-${company.coId}`}>
+                    <TableCell className={`font-medium ${isMobile ? "hidden md:table-cell" : ""}`} data-testid={`text-coid-${company.coId}`}>
+                      {company.coId}
+                    </TableCell>
+                    <TableCell data-testid={`text-name-${company.coId}`}>
+                      {company.name}
+                    </TableCell>
+                    <TableCell className="text-sm text-muted-foreground" data-testid={`text-contact-${company.coId}`}>
+                      {company.transportManager || "—"}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex justify-end gap-1">
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          onClick={() => setEditingCompany(company)}
+                          data-testid={`button-edit-company-${company.coId}`}
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          onClick={() => setDeletingCompany(company)}
+                          data-testid={`button-delete-company-${company.coId}`}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </div>
+        {totalPages > 1 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={onPageChange}
+            tableId="companies"
+            viewType={isMobile ? "mobile" : "desktop"}
+          />
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function VehiclesCard({
+  vehicles,
+  vehiclesLoading,
+  companies,
+  showVehicleForm,
+  setShowVehicleForm,
+  vehicleForm,
+  createVehicleMutation,
+  getCompanyName,
+  setEditingVehicle,
+  setDeletingVehicle,
+  isMobile,
+  searchQuery,
+  setSearchQuery,
+  currentPage,
+  totalPages,
+  totalItems,
+  onPageChange,
+}: {
+  vehicles: Vehicle[];
+  vehiclesLoading: boolean;
+  companies: Company[];
+  showVehicleForm: boolean;
+  setShowVehicleForm: (show: boolean) => void;
+  vehicleForm: any;
+  createVehicleMutation: any;
+  getCompanyName: (coId: number) => string;
+  setEditingVehicle: (vehicle: Vehicle) => void;
+  setDeletingVehicle: (vehicle: Vehicle) => void;
+  isMobile: boolean;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+  onPageChange: (page: number) => void;
+}) {
+  return (
+    <Card>
+      <CardHeader className="space-y-0 pb-2 gap-1 flex-wrap">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Truck className="h-5 w-5 text-primary" />
+            <CardTitle>Vehicles</CardTitle>
+          </div>
+          <Button
+            size="sm"
+            onClick={() => setShowVehicleForm(!showVehicleForm)}
+            data-testid="button-toggle-vehicle-form"
+          >
+            <Plus className="h-4 w-4 mr-1" />
+            New Vehicle
+          </Button>
+        </div>
+        <CardDescription>
+          {totalItems} {totalItems === 1 ? "vehicle" : "vehicles"} registered
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div>
+          <Input
+            type="text"
+            placeholder="Search vehicles..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full"
+            data-testid="input-search-vehicles"
+          />
+        </div>
+        {showVehicleForm && (
+          <Form {...vehicleForm}>
+            <form
+              onSubmit={vehicleForm.handleSubmit((data: any) =>
+                createVehicleMutation.mutate(data)
+              )}
+              className="space-y-3 p-4 border rounded-md bg-muted/50"
+              data-testid="form-create-vehicle"
+            >
+              <FormField
+                control={vehicleForm.control}
+                name="vreg"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Vehicle Registration *</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="ABC123"
+                        maxLength={10}
+                        className="uppercase font-mono"
+                        data-testid="input-vreg"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={vehicleForm.control}
+                name="coId"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company *</FormLabel>
+                    <Select
+                      onValueChange={(value) => field.onChange(Number(value))}
+                      value={field.value?.toString() || ""}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-full" data-testid="select-company">
+                          <SelectValue placeholder="Select a company" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {companies.map((company) => (
+                          <SelectItem key={company.coId} value={company.coId.toString()}>
+                            {company.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="flex gap-2 pt-2">
+                <Button
+                  type="submit"
+                  disabled={createVehicleMutation.isPending}
+                  data-testid="button-submit-vehicle"
+                >
+                  {createVehicleMutation.isPending ? "Creating..." : "Create Vehicle"}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setShowVehicleForm(false);
+                    vehicleForm.reset();
+                  }}
+                  data-testid="button-cancel-vehicle"
+                >
+                  Cancel
+                </Button>
+              </div>
+            </form>
+          </Form>
+        )}
+
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Registration</TableHead>
+                <TableHead>Company</TableHead>
+                <TableHead>Washes</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {vehiclesLoading ? (
+                <TableRow>
+                  <TableCell colSpan={4} className="text-center text-muted-foreground">
+                    Loading...
+                  </TableCell>
+                </TableRow>
+              ) : vehicles.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={4} className="text-center text-muted-foreground">
+                    No vehicles yet
+                  </TableCell>
+                </TableRow>
+              ) : (
+                vehicles.map((vehicle) => (
+                  <TableRow key={vehicle.vreg} data-testid={`row-vehicle-${vehicle.vreg}`}>
+                    <TableCell className="font-mono font-medium" data-testid={`text-vreg-${vehicle.vreg}`}>
+                      {vehicle.vreg}
+                    </TableCell>
+                    <TableCell data-testid={`text-company-${vehicle.vreg}`}>
+                      {getCompanyName(vehicle.coId)}
+                    </TableCell>
+                    <TableCell className="text-muted-foreground" data-testid={`text-washfreq-${vehicle.vreg}`}>
+                      {vehicle.washFreq === 0 ? "Unlimited" : vehicle.washFreq}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex justify-end gap-1">
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          onClick={() => setEditingVehicle(vehicle)}
+                          data-testid={`button-edit-vehicle-${vehicle.vreg}`}
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          onClick={() => setDeletingVehicle(vehicle)}
+                          data-testid={`button-delete-vehicle-${vehicle.vreg}`}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </div>
+        {totalPages > 1 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={onPageChange}
+            tableId="vehicles"
+            viewType={isMobile ? "mobile" : "desktop"}
+          />
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  tableId,
+  viewType,
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  tableId: string;
+  viewType: string;
+}) {
+  const maxPageButtons = 5;
+  const startPage = Math.max(1, Math.min(currentPage - 2, totalPages - maxPageButtons + 1));
+  const endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
+
+  const pages = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
+
+  return (
+    <div className="flex items-center justify-center gap-2 flex-wrap" data-testid={`pagination-controls-${tableId}-${viewType}`}>
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        data-testid={`button-prev-page-${tableId}-${viewType}`}
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </Button>
+
+      {startPage > 1 && (
+        <>
+          <Button
+            size="sm"
+            variant={currentPage === 1 ? "default" : "outline"}
+            onClick={() => onPageChange(1)}
+            data-testid={`button-page-1-${tableId}-${viewType}`}
+          >
+            1
+          </Button>
+          {startPage > 2 && <span className="text-muted-foreground">...</span>}
+        </>
+      )}
+
+      {pages.map((page) => (
+        <Button
+          key={page}
+          size="sm"
+          variant={currentPage === page ? "default" : "outline"}
+          onClick={() => onPageChange(page)}
+          data-testid={`button-page-${page}-${tableId}-${viewType}`}
+        >
+          {page}
+        </Button>
+      ))}
+
+      {endPage < totalPages && (
+        <>
+          {endPage < totalPages - 1 && <span className="text-muted-foreground">...</span>}
+          <Button
+            size="sm"
+            variant={currentPage === totalPages ? "default" : "outline"}
+            onClick={() => onPageChange(totalPages)}
+            data-testid={`button-page-${totalPages}-${tableId}-${viewType}`}
+          >
+            {totalPages}
+          </Button>
+        </>
+      )}
+
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        data-testid={`button-next-page-${tableId}-${viewType}`}
+      >
+        <ChevronRight className="h-4 w-4" />
+      </Button>
+    </div>
+  );
+}
+
+function EditCompanyForm({
+  company,
+  onSubmit,
+  onCancel,
+  isPending,
+}: {
+  company: Company;
+  onSubmit: (data: any) => void;
+  onCancel: () => void;
+  isPending: boolean;
+}) {
+  const form = useForm({
+    resolver: zodResolver(insertCompanySchema),
+    defaultValues: {
+      name: company.name,
+      transportManager: company.transportManager ?? "",
+      transportManagerEmail: company.transportManagerEmail ?? "",
+      transportManagerPhone: company.transportManagerPhone ?? "",
+      poContact: company.poContact ?? "",
+      poContactEmail: company.poContactEmail ?? "",
+      poContactPhone: company.poContactPhone ?? "",
+      plContact: company.plContact ?? "",
+      plContactEmail: company.plContactEmail ?? "",
+      plContactPhone: company.plContactPhone ?? "",
+    },
+  });
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" data-testid="form-edit-company">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Company Name *</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Fleet Transport Ltd" data-testid="input-edit-company-name" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Tabs defaultValue="tm" className="w-full">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="tm">TM</TabsTrigger>
+            <TabsTrigger value="po">PO</TabsTrigger>
+            <TabsTrigger value="pl">PL</TabsTrigger>
+          </TabsList>
+          <TabsContent value="tm" className="space-y-4 pt-4">
+            <FormField
+              control={form.control}
+              name="transportManager"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Transport Manager</FormLabel>
+                  <FormControl>
+                    <Input {...field} value={field.value ?? ""} placeholder="John Smith" data-testid="input-edit-transport-manager" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="transportManagerEmail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>TM Email</FormLabel>
+                  <FormControl>
+                    <Input {...field} value={field.value ?? ""} type="email" placeholder="contact@company.co.uk" data-testid="input-edit-tm-email" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="transportManagerPhone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>TM Phone</FormLabel>
+                  <FormControl>
+                    <Input {...field} value={field.value ?? ""} placeholder="01234567890" data-testid="input-edit-tm-phone" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </TabsContent>
+          <TabsContent value="po" className="space-y-4 pt-4">
+            <FormField
+              control={form.control}
+              name="poContact"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>PO Contact</FormLabel>
+                  <FormControl>
+                    <Input {...field} value={field.value ?? ""} placeholder="Jane Doe" data-testid="input-edit-po-contact" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="poContactEmail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>PO Email</FormLabel>
+                  <FormControl>
+                    <Input {...field} value={field.value ?? ""} type="email" placeholder="jane@company.co.uk" data-testid="input-edit-po-email" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="poContactPhone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>PO Phone</FormLabel>
+                  <FormControl>
+                    <Input {...field} value={field.value ?? ""} placeholder="01234567891" data-testid="input-edit-po-phone" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </TabsContent>
+          <TabsContent value="pl" className="space-y-4 pt-4">
+            <FormField
+              control={form.control}
+              name="plContact"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>PL Contact</FormLabel>
+                  <FormControl>
+                    <Input {...field} value={field.value ?? ""} placeholder="Bob Miller" data-testid="input-edit-pl-contact" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="plContactEmail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>PL Email</FormLabel>
+                  <FormControl>
+                    <Input {...field} value={field.value ?? ""} type="email" placeholder="bob@company.co.uk" data-testid="input-edit-pl-email" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="plContactPhone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>PL Phone</FormLabel>
+                  <FormControl>
+                    <Input {...field} value={field.value ?? ""} placeholder="01234567892" data-testid="input-edit-pl-phone" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </TabsContent>
+        </Tabs>
+        <DialogFooter>
+          <Button type="button" variant="outline" onClick={onCancel} data-testid="button-cancel-edit-company">
+            Cancel
+          </Button>
+          <Button type="submit" disabled={isPending} data-testid="button-submit-edit-company">
+            {isPending ? "Saving..." : "Save Changes"}
+          </Button>
+        </DialogFooter>
+      </form>
+    </Form >
+  );
+}
+
+function EditVehicleForm({
+  vehicle,
+  companies,
+  onSubmit,
+  onCancel,
+  isPending,
+}: {
+  vehicle: Vehicle;
+  companies: Company[];
+  onSubmit: (data: any) => void;
+  onCancel: () => void;
+  isPending: boolean;
+}) {
+  const vehicleFormSchema = insertVehicleSchema.pick({ coId: true, washFreq: true }).extend({
+    coId: insertVehicleSchema.shape.coId.refine((val) => val > 0, {
+      message: "Please select a company",
+    }),
+  });
+
+  const form = useForm({
+    resolver: zodResolver(vehicleFormSchema),
+    defaultValues: {
+      coId: vehicle.coId,
+      washFreq: vehicle.washFreq,
+    },
+  });
+
+  const WASH_FREQUENCY_OPTIONS = [
+    { label: "Unlimited", value: 0 },
+    { label: "Weekly", value: 7 },
+    { label: "Fortnightly", value: 14 },
+    { label: "Monthly", value: 28 },
+  ];
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" data-testid="form-edit-vehicle">
+        <div className="space-y-2">
+          <FormLabel>Vehicle Registration</FormLabel>
+          <Input
+            value={vehicle.vreg}
+            disabled
+            className="uppercase font-mono bg-muted"
+            data-testid="input-edit-vreg-disabled"
+          />
+          <p className="text-sm text-muted-foreground">Registration cannot be changed</p>
+        </div>
+        <FormField
+          control={form.control}
+          name="coId"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Company *</FormLabel>
+              <Select
+                onValueChange={(value) => field.onChange(Number(value))}
+                value={field.value?.toString() || ""}
+              >
+                <FormControl>
+                  <SelectTrigger className="w-full" data-testid="select-edit-vehicle-company">
+                    <SelectValue placeholder="Select a company" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {companies.map((company) => (
+                    <SelectItem key={company.coId} value={company.coId.toString()}>
+                      {company.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="washFreq"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Wash Frequency</FormLabel>
+              <Select
+                onValueChange={(value) => field.onChange(Number(value))}
+                value={field.value?.toString()}
+              >
+                <FormControl>
+                  <SelectTrigger data-testid="select-edit-wash-freq">
+                    <SelectValue placeholder="Select frequency" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {WASH_FREQUENCY_OPTIONS.map((option) => (
+                    <SelectItem key={option.value} value={option.value.toString()}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <p className="text-sm text-muted-foreground">How often this vehicle should be washed</p>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <DialogFooter>
+          <Button type="button" variant="outline" onClick={onCancel} data-testid="button-cancel-edit-vehicle">
+            Cancel
+          </Button>
+          <Button type="submit" disabled={isPending} data-testid="button-submit-edit-vehicle">
+            {isPending ? "Saving..." : "Save Changes"}
+          </Button>
+        </DialogFooter>
+      </form>
+    </Form>
+  );
+}

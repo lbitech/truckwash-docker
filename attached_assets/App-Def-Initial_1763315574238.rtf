@@ -1,0 +1,986 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Arial-BoldMT;\f1\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red10\green10\blue10;\red255\green255\blue255;\red0\green0\blue0;
+\red193\green193\blue193;}
+{\*\expandedcolortbl;;\cssrgb\c3922\c3922\c3922;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;
+\cssrgb\c80000\c80000\c80000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid402\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid601\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid7}
+{\list\listtemplateid8\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid701\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid8}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}{\listoverride\listid8\listoverridecount0\ls8}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww23500\viewh12540\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs40 \cf2 \cb3 \expnd0\expndtw0\kerning0
+I. Introduction\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0
+\fs32 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Purpose:
+\f1\b0 \'a0The objective of the application is to provide a web application that allows a user to record truck washes undertaken at a number of locations around the UK.\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Scope:
+\f1\b0 \'a0In scope is a web page that allows a user to input a vehicle registration to see if it already exists on the database, if it does exist then select a wash type from a dropdown selection field and create a new record in the washtab table which details the vehicle, wash type and date. If the vehicle doesn\'92t already exist in the database then record it in washtab with a CoID equal to 999999. There also needs to be a web page which allows a user to review all the record wash transactions in a table. It must be possible to select date ranges to filter the data displayed in the table, it should also be possible to specify values to filter by on each field (eg: vehicle registration, company ID etc). The aim of the application is to be able to list a number of wash transactions and generate a purchase order list and subsequently an invoice, both in pdf format.\cb1 \
+\ls1\ilvl0
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Intended Audience:
+\f1\b0 \'a0The users involved in the application are as follows : \
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f0\b\fs26\fsmilli13333 \cf0 \cb1 User Name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User Type\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User Description\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0 \cf0 WashOperative\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Standard\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user records and performs vehicle washes, they are able to add wash records.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 WashManager\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Admin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user has the same privileges as the WashOperative also with the ability to edit wash records and add vehicles to companies.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 FleetAdmin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Standard\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user is able to enquire upon wash data for their respective company and manage fleet vehicle data.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 FleetManager\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Standard\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user is able to enquire upon wash data for their respective company and manage fleet vehicle data.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 UKTruckAdmin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 SuperAdmin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user is able to perform all tasks and manager other users.\cell \lastrow\row
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+
+\fs32 \cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls2\ilvl0
+\f0\b \cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Definitions & Acronyms:
+\f1\b0 \'a0The following wash types can be undertaken : \
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f0\b\fs26\fsmilli13333 \cf0 \cb1 Washtype\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 Cost
+\f1\b0 \cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Minibus\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a322\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Van\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a320\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Luton Van\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a322\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Rigid Flat <17 Tonne\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a324\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Rigid Box <17 Tonne\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a324\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Tipper\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a333\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Rigid Tanker\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a333\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Unit only\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a322\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Coach / Large Rigid\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a328\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Unit with slat / skelley\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a328\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Unit with trailer\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a330\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Artic Tanker\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a335\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Tailer Only\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a327\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Car Transporter\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a330\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Artic Draw-Bar\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a332\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Alloys Deep Clean\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a318
+\fs32 \cf2 \cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs40 \cf2 II. Overall Description\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls3\ilvl0
+\fs32 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Product Perspective:
+\f1\b0 \'a0The app allows a user to record a wash and then allows UKTruck Clean to generate purchase orders and invoices for each company that uses the service.\cb1 \
+\ls3\ilvl0
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+User Roles & Characteristics:
+\f1\b0 \'a0The users involved in the application are as follows : \
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f0\b\fs26\fsmilli13333 \cf0 \cb1 User Name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User Type\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User Description\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0 \cf0 WashOperative\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Standard\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user records and performs vehicle washes, they are able to add wash records.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 WashManager\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Admin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user has the same privileges as the WashOperative also with the ability to edit wash records and add vehicles to companies.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 FleetAdmin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Standard\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user is able to enquire upon wash data for their respective company and manage fleet vehicle data.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 FleetManager\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Standard\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user is able to enquire upon wash data for their respective company and manage fleet vehicle data.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 UKTruckAdmin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 SuperAdmin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user is able to perform all tasks and manager other users.\cell \lastrow\row
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+
+\fs32 \cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls4\ilvl0
+\f0\b \cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Operating Environment:
+\f1\b0 \'a0The application is a web app with a database backend, it is built and deployed on GCP.\cb1 \
+\ls4\ilvl0
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Design & Implementation Constraints:
+\f1\b0 \'a0The application is built using serverless compute infrastructure, a minuscule delay in a page being presented can be tolerated, the application is not a high volume transactional application, expected transaction rates are 60 transactions per-hour.\cb1 \
+\ls4\ilvl0
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Assumptions & Dependencies:
+\f1\b0 \'a0It is assumed when a vehicle reg is entered in the 
+\f0\b create-wash
+\f1\b0  journey the page will be populated with the company details within 1 second.\'a0\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs40 \cf2 III. Functional Requirements \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs32 \cf2 This section details the specific features and functions the application must perform, often broken down by user role or feature set.\'a0\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls5\ilvl0
+\f0\b \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+User Stories/Use Cases:
+\f1\b0 \'a0\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa240\partightenfactor0
+\ls5\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\'93Create Wash\'94 - This user story involves the wash operative entering a vehicle reg to the application, this is then checked to see if the vehicle reg is already registered in the system for a specific company. If it is there, populate the screen with the company details and present the wash options as a dropdown, the wash is selected and submitted, the reg, company, washtype and date & time is recorded in the database. If the reg isn\'92t recognised, record it with a company name of \'93to-be-confirmed\'94.\
+{\listtext	\uc0\u9702 	}\'93Create Purchase Order\'94 - This user story involves the UKTruckClean admin selecting a company and date range from the wash transactions screen and clicking a button to select all the records which are filtered. The cost of all the washes should be calculated and listed with the following details in. PDF doc : Company, Wash transactions listed, sum total emboldened, a unique Purchase Order generated using the company ID and the start date and end date appended.\expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls5\ilvl0
+\f0\b \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Detailed Feature Descriptions:
+\f1\b0 \'a0\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa320\partightenfactor0
+\ls5\ilvl1
+\f0\b \cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Create wash
+\f1\b0 .\cb1 \
+\ls5\ilvl1
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Input:
+\f1\b0 \'a0Wash Operative enters the vehicle reg and wash type.\cb1 \
+\ls5\ilvl1
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Action:
+\f1\b0 \'a0The system records the wash selected with the vehicle and company details.\cb1 \
+\ls5\ilvl1
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Output:
+\f1\b0 \'a0The wash transaction is recorded.\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs40 \cf2 IV. Non-Functional Requirements (The "How Well")\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs32 \cf2 These specify the quality attributes and performance criteria for the system.\'a0\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls6\ilvl0
+\f0\b \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Performance:
+\f1\b0 \'a0The application should load pages in minimal time and support multiple users (20).\cb1 \
+\ls6\ilvl0
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Security:
+\f1\b0 \'a0The system should provide a user registration process and a login authentication page.\cb1 \
+\ls6\ilvl0
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Usability:
+\f1\b0 \'a0The design should be clean and simple.\cb1 \
+\ls6\ilvl0
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Reliability & Availability:
+\f1\b0 \'a0The system should be available from 06:00 to 20:00 on a daily basis.\cb1 \
+\ls6\ilvl0
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Scalability:
+\f1\b0 \'a0The system should use serverless cloud technology.\'a0\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs40 \cf2 V. External Interface Requirements\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls7\ilvl0
+\fs32 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+User Interfaces (UI):
+\f1\b0 \'a0Wireframes, mockups, or design guidelines for all application screens and visual elements.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs40 \cf2 VI. System Models & Diagrams\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls8\ilvl0
+\fs32 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Flowcharts or Workflow Diagrams:
+\f1\b0 \'a0Visual representations of key processes and data flow.\cb1 \
+\ls8\ilvl0
+\f0\b \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Database Schema/ER Diagrams:
+\f1\b0 \'a0An outline of data structures and relationships.\'a0\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf2 \cb1 VehicleTab model:\
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth4380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f0\b\fs26\fsmilli13333 \cf0 Field Name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Type\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Constraints\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Description\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth4380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0 \cf0 VReg\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 char(10)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Primary Key\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Vehicle Reg\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth4380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 CoID\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Integer\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Company ID\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth4380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 WashFreq\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Integer\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Default 0\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Minimum wash frequency\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth4380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 LastWashDate\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 date (dd/mm/yy)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Date the vehicle was last washed\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth4380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 LastWashType\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 date (dd/mm/yy)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Type of last vehicle wash\cell \lastrow\row
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+
+\fs32 \cf2 \
+WashTypeTab model:\
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2160\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth5860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f0\b\fs26\fsmilli13333 \cf0 Field Name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Type\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Constraints\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Description\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2160\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth5860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0 \cf0 WTID\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 AutoNumber\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Primary Key\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Unique ID number for the wash type\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2160\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth5860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Description\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Char (100)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Name of wash\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2160\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth5860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Price\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Integer\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Price of wash\cell \lastrow\row
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+
+\fs32 \cf2 \
+WashTab model:\
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth2380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f0\b\fs26\fsmilli13333 \cf0 Field Name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Type\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Constraints\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Description\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth2380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0 \cf0 WashID\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 AutoNumber\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Primary Key\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Wash ID number\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth2380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 VReg\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 char(10)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not Null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Vehicle Reg\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth2380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 CoID\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Integer\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not Null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Company ID\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth2380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Location\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 char(30)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not Null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Wash location\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth2380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 WashType\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Integer\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not Null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Wash type\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth2380\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 WashDate\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 date (dd/mm/yy)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not Null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Wash date\cell \lastrow\row
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+
+\fs32 \cf2 \
+UserTab  model:\
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f0\b\fs26\fsmilli13333 \cf0 Field Name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Type\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Constraints\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Description\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0 \cf0 UID\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 AutoNumber\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Primary Key\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User ID\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Char (100)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User name\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Email\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Char (email)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User Email\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Role\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Char (20)\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not null\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User Role\cell \lastrow\row
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+
+\fs32 \cf2 \
+WashType reference data :\
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\fs26\fsmilli13333 \cf0 Washtype\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 Cost\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Minibus\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a322\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Van\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a320\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Luton Van\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a322\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Rigid Flat <17 Tonne\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a324\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Rigid Box <17 Tonne\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a324\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Tipper\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a333\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Rigid Tanker\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a333\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Unit only\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a322\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Coach / Large Rigid\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a328\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Unit with slat / skelley\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a328\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Unit with trailer\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a330\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Artic Tanker\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a335\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Tailer Only\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a327\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Car Transporter\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a330\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Artic Draw-Bar\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a332\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth3000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Alloys Deep Clean\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 \'a318\cell \lastrow\row
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+
+\fs32 \cf2 \
+User Definition reference data : \
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f0\b\fs26\fsmilli13333 \cf0 User Name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User Type\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 User Description\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0 \cf0 WashOperative\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Standard\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user records and performs vehicle washes, they are able to add wash records.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 WashManager\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Admin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user has the same privileges as the WashOperative also with the ability to edit wash records and add vehicles to companies.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 FleetAdmin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Standard\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user is able to enquire upon wash data for their respective company and manage fleet vehicle data.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 FleetManager\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Standard\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user is able to enquire upon wash data for their respective company and manage fleet vehicle data.\cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalb \clshdrawnil \clwWidth2600\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth16060\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl60 \clpadb40 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 UKTruckAdmin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 SuperAdmin\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 This user is able to perform all tasks and manager other users.\cell \lastrow\row
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+
+\fs32 \cf2 \
+}

@@ -1,0 +1,27 @@
+DEBUG: /api/auth/user hit at 2025-12-06T16:28:39.464Z
+DEBUG: Session user: undefined
+DEBUG: Returning null (no user)
+DEBUG: /api/auth/user hit at 2025-12-06T16:28:39.482Z
+DEBUG: Session user: undefined
+DEBUG: Returning null (no user)
+DEBUG: /api/auth/user hit at 2025-12-06T16:28:41.342Z
+DEBUG: Session user: {"id":"mock-user-id","email":"test@example.com","firstName":"Test","lastName":"User","profileImageUrl":"","role":"WashOperative"}
+DEBUG: /api/auth/user hit at 2025-12-06T16:28:45.445Z
+DEBUG: Session user: {"id":"mock-user-id","email":"test@example.com","firstName":"Test","lastName":"User","profileImageUrl":"","role":"WashOperative"}
+DEBUG: /api/auth/user hit at 2025-12-06T16:29:36.602Z
+DEBUG: Session user: undefined
+DEBUG: Returning null (no user)
+DEBUG: /api/auth/user hit at 2025-12-06T16:29:36.608Z
+DEBUG: Session user: undefined
+DEBUG: Returning null (no user)
+DEBUG: /api/auth/user hit at 2025-12-06T16:29:36.623Z
+DEBUG: Session user: undefined
+DEBUG: Returning null (no user)
+DEBUG: /api/auth/user hit at 2025-12-06T16:29:41.202Z
+DEBUG: Session user: {"id":"mock-user-id","email":"test@example.com","firstName":"Test","lastName":"User","profileImageUrl":"","role":"WashOperative"}
+DEBUG: Fetching user with ID: mock-user-id
+DEBUG: Found user: {"id":"mock-user-id","email":"test@example.com","firstName":"Test","lastName":"User","profileImageUrl":"","role":"WashOperative","createdAt":"2025-12-06T15:25:18.000Z","updatedAt":"2025-12-06T16:29:41.000Z"}
+DEBUG: /api/auth/user hit at 2025-12-06T16:29:44.098Z
+DEBUG: Session user: {"id":"mock-user-id","email":"test@example.com","firstName":"Test","lastName":"User","profileImageUrl":"","role":"WashOperative"}
+DEBUG: Fetching user with ID: mock-user-id
+DEBUG: Found user: {"id":"mock-user-id","email":"test@example.com","firstName":"Test","lastName":"User","profileImageUrl":"","role":"WashOperative","createdAt":"2025-12-06T15:25:18.000Z","updatedAt":"2025-12-06T16:29:41.000Z"}
